@@ -90,7 +90,3 @@ require_once('view/layout/nav.php');
         <?php
 require_once('view/layout/footer.php');
 ?>
-
-git remote add origin https://github.com/elkhokh/BlogApp.git
-git branch -M master
-git push -u origin master
