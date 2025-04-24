@@ -35,10 +35,11 @@ function login_user($email, $password){
 
     $conn = $GLOBALS['conn'];
 
-    $sql = " SELECT * FROM usres WHERE email ='$email'";
+    $sql = "SELECT * FROM users WHERE email ='$email'";
+
     $res= mysqli_query($conn,$sql);
     
-    if(mysqli_num_rows($res)=== 0){
+    if(mysqli_num_rows($res) === 0){
         set_message("danger", "Invaild email");
         header("location: ./index.php?page=login");
         exit;
