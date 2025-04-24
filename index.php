@@ -8,6 +8,8 @@ require_once('view/layout/header.php');
 /************************ routing system **************************** */
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
+// show_message();
+
 $rout = [
     'home'                =>  './view/home.php',
     'register'            =>  './view/auth/register.php',
@@ -16,13 +18,10 @@ $rout = [
     'register_controller' =>  './controller/auth/registercontroller.php',
     'login_controller'    =>  './controller/auth/logincontroller.php',
 ];
-
-// showMessages();
+show_message();
 
 $file = isset($rout[$page]) ? $rout[$page] : './view/404.php';
 include $file;
-
-
 
 
 
@@ -33,10 +32,10 @@ include $file;
 //         include "./view/home.php";
 //         break;
 //     case 'register' :
-//         include ".view/auth/register.php";
+//         include "./view/auth/register.php";
 //         break;
 //     case 'login' :
-//         include ".view/auth/login.php";
+//         include "./view/auth/login.php";
 //         break;
 //     case 'logout' :
 //         include "./controller/auth/logoutcontroller.php";
