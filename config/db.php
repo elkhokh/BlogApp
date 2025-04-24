@@ -24,8 +24,6 @@ catch(Exception $ex){
 
 
 
-
-
 // if(!$conn) {
 //     echo "not select database";
 // }
