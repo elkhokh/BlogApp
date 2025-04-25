@@ -53,5 +53,8 @@ function login_user($email, $password){
     {
         return false;
     }
-
+}
+/********************************   ***************************************** */
+function get_blog(){
+    
 }
