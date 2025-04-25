@@ -20,7 +20,7 @@ $rout = [
 ];
 show_message();
 
-$file = isset($rout[$page]) ? $rout[$page] : './view/404.php';
+$file = isset($rout[$page]) ? $rout[$page] : './view/error/404.php';
 include $file;
 
 
@@ -47,7 +47,7 @@ include $file;
 //         include "./controller/auth/logincontroller.php";
 //         break;
 //     default: 
-//         include "./view/404.php";
+//         include "./view/error/404.php";
 //         break;
 // }
 
