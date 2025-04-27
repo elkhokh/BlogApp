@@ -95,5 +95,29 @@ function add_blog($title, $content, $image){
         return false;
     }
 }
+/*********** function to find  blog ********************** */
 
-
+function find_blog($id){
+    $conn = $GLOBALS['conn'];  //conn with database
+    $sql = "SELECT * FROM posts WHERE id = '$id' ";
+    $res =mysqli_query($conn , $sql);
+     
+    if(mysqli_num_rows($res) === 0){
+        set_message("danger", "Not Found Blog");
+        header("location: ./index.php?page=main");
+        exit;
+    }
+    return mysqli_fetch_assoc($res);
+}
+/*****************  function to delete blog *************** */
+function delete_blog($id){
+    find_blog($id);
+    $conn = $GLOBALS['conn'];  //conn with database
+    $sql = "DELETE FROM posts WHERE id = '$id'";
+    $res = mysqli_query($conn,$sql);
+    if($res){
+        return true;
+    }else{
+        return false;
+    }
+}
