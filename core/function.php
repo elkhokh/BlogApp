@@ -22,7 +22,11 @@ $password_hash = password_hash($password,PASSWORD_DEFAULT);
 $sql ="INSERT INTO `users`(name, email, password) VALUES ('$name','$email' ,'$password_hash')";
 $res= mysqli_query($conn,$sql);
 if($res){
-    $_SESSION['user_name'] = $name;
+    $user_id = mysqli_insert_id($conn);
+    $_SESSION['user'] = [
+        'id' => $user_id,
+        'name' => $name,
+    ];
     return true;
 }
 else {
@@ -46,7 +50,10 @@ function login_user($email, $password){
     }
     $user = mysqli_fetch_assoc($res);
     if(password_verify($password,$user['password'])){
-        $_SESSION['user_name'] = $user['name'];
+        $_SESSION['user'] =[
+            'id' => $user['id'],
+            'name' => $user['name'],
+        ];
         return true;
     }
     else 
@@ -54,7 +61,39 @@ function login_user($email, $password){
         return false;
     }
 }
-/********************************   ***************************************** */
+/********************** function to get posts ************************************ */
 function get_blog(){
-    
+
+    $conn = $GLOBALS['conn'];
+
+    $sql = " SELECT * FROM `posts` WHERE user_id ='{$_SESSION['user']['id']}'" ;
+
+    $res = mysqli_query($conn ,$sql);
+
+    return mysqli_fetch_all($res ,MYSQLI_ASSOC  );
 }
+/************************  function to store posts  ********************** */
+function add_blog($title, $content, $image){
+    $conn = $GLOBALS['conn'];  //conn with database
+    // to move image from user into folder and store in path in database
+    $file_name = $image['name'];
+    $tmp_name = $image['tmp_name'];
+    $absolute_path = realpath (__DIR__ ."/../assets/img") . "/". $file_name;
+    $relative_path = "/assets/img/" . $file_name ;
+    if(!move_uploaded_file($tmp_name,$absolute_path)){
+        die("<div class='text-center'><div class='alert alert-danger'> file not upload</div></div>");
+    }
+    //insert query and run query
+    $sql = "INSERT INTO posts ( title, content, image, user_id, create_at) 
+    VALUES('$title', '$content' , '$relative_path' ,'{$_SESSION['user']['id']}' , now() ) ";
+    $res = mysqli_query($conn, $sql);
+
+    if($res){
+        return true ;
+    }
+    else{
+        return false;
+    }
+}
+
+

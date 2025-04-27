@@ -83,6 +83,22 @@ function valid_login($email,$password){
     }
         return null; 
 }
+/******************* blog validation function ************** */
 
+function valid_create_blog( $title, $content, $image ){
 
+    $data_blog=[
+        'title'=>htmlspecialchars($title),
+        'content'=>htmlspecialchars($content),
+        'image'=>$image,
+            ];
 
+    foreach($data_blog as $key =>$value)
+    {
+        if(valid_data_require($value,$key)){
+            return $type_of_error = valid_data_require($value,$key);
+        }
+    } 
+}
+
+/*********************************************** */
