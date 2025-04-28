@@ -8,7 +8,8 @@ $path_image = path_image();
 <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center">
         <h1 class="mb-4">All Posts</h1>
-        <!-- <a href="" class="btn btn-primary mb-3">Add New Blog</a> -->
+
+        <a href="index.php?page=create" class="btn btn-success ">Add new blog </a>
     </div>
     <?php if(!empty($blogs)): ?>
     <table class="table">
@@ -33,7 +34,7 @@ $path_image = path_image();
                 
                     <a href="<?= $path_image . $blog['image'] ?>" download class="btn btn-outline-primary btn-sm">Download image</a>
 
-                    <a href="index.php?page=create" class="btn btn-outline-success btn-sm">Add</a>
+                    
                     <a href="index.php?page=update&id=<?=$blog['id'] ?>" class="btn btn-outline-warning btn-sm">Edit</a>
                     
                     <form action="index.php?page=delete_controller" method="POST"

@@ -41,8 +41,6 @@ $rout = [
 $file = isset($rout[$page]) ? $rout[$page] : './view/error/404.php';
 include $file;
 
-
-
 /******************** another routing system*************************** */
 // switch($page){
 //     case 'home' :
