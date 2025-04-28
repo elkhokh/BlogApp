@@ -1,6 +1,7 @@
 <?php
 
-// $_SERVER['REQUEST_SCHEME'] to check if host http or https
+$path_image = path_image();
+
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $blog = find_blog($id);
@@ -23,7 +24,7 @@ if (isset($_GET['id'])) {
                 <div>
                     <small>Current Image</small>
                 
-                    <img width="25" src="<?= "{$_SERVER['REQUEST_SCHEME']}://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . $blog['image'] ?>">
+                    <img width="25" src="<?=  $path_image.$blog['image'] ?>">
                 </div>
             <?php endif; ?>
         </div>

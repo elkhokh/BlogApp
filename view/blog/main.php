@@ -29,7 +29,7 @@ $image_path = "http://".$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF'])  ;
                 <td> <?= $blog['title'] ?>  </td>
                 <td> <?= $blog['content'] ?>  </td>
                 <td>
-                    <a href="index.php?page=show" class="btn btn-outline-info btn-sm">View</a>
+                    <a href="index.php?page=show&=<?=$blog['id']?>" class="btn btn-outline-info btn-sm">View</a>
                     <a href="\." class="btn btn-outline-primary btn-sm">Download image</a>
                     <a href="index.php?page=create" class="btn btn-outline-success btn-sm">Add</a>
                     <a href="index.php?page=update&id=<?=$blog['id'] ?>" class="btn btn-outline-warning btn-sm">Edit</a>

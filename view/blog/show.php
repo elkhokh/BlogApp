@@ -1,12 +1,15 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <?php
-        if ($_GET['action'] == "show" && isset($_GET['id'])) {
+
+$path_image = path_image();
+
+        if (isset($_GET['id'])) {
             $id = $_GET['id'];
             $blog = find_blog($id);
         }
         ?>
-        <img height="300" src="<?= "http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . $blog['image'] ?>">
+        <img height="50" width="50" src="<?= $path_image = path_image();?>">
         <div class="mt-5">
             <div>title : <?= $blog['title'] ?></div>
             <div>content : <?= $blog['content'] ?></div>
