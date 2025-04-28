@@ -1,7 +1,7 @@
 <?php 
     $blogs = get_blog();
 // print_r($blogs) ; exit;
-$image_path = "http://".$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF'])  ;
+$path_image = path_image();
 // print_r($image_path) ; exit;
 ?>
 
@@ -25,13 +25,13 @@ $image_path = "http://".$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF'])  ;
         <?php foreach($blogs as $blog ): ?>
             <tr>
                 <td> <?= $blog['id'] ?> </td>
-                <td><img width="25" src=" <?=$image_path . $blog['image'] ?>"></td>
+                <td><img width="25" src=" <?=$path_image . $blog['image'] ?>"></td>
                 <td> <?= $blog['title'] ?>  </td>
                 <td> <?= $blog['content'] ?>  </td>
                 <td>
                     <a href="index.php?page=show&id=<?=$blog['id']?>" class="btn btn-outline-info btn-sm">View</a>
                 
-                    <a href="<?= $image_path . $blog['image'] ?>" download class="btn btn-outline-primary btn-sm">Download image</a>
+                    <a href="<?= $path_image . $blog['image'] ?>" download class="btn btn-outline-primary btn-sm">Download image</a>
 
                     <a href="index.php?page=create" class="btn btn-outline-success btn-sm">Add</a>
                     <a href="index.php?page=update&id=<?=$blog['id'] ?>" class="btn btn-outline-warning btn-sm">Edit</a>
