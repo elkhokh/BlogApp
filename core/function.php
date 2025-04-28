@@ -77,8 +77,9 @@ function add_blog($title, $content, $image){
     $conn = $GLOBALS['conn'];  //conn with database
     // to move image from user into folder and store in path in database
     $file_name = $image['name'];
-    $tmp_name = $image['tmp_name'];
+    $tmp_name = $image["tmp_name"];
     $absolute_path = realpath (__DIR__ ."/../assets/img") . "/". $file_name;
+    // $absolute_path =  (__DIR__ ."/../assets/img") . "/". $file_name;
     $relative_path = "/assets/img/" . $file_name ;
     if(!move_uploaded_file($tmp_name,$absolute_path)){
         die("<div class='text-center'><div class='alert alert-danger'> file not upload</div></div>");
@@ -121,3 +122,34 @@ function delete_blog($id){
         return false;
     }
 }
+/*********************function to update blog ****************** */
+function update_blog($id, $title, $content, $image ){
+    $blog = find_blog($id);
+    $conn = $GLOBALS['conn'];
+    $absolute_path = realpath(__DIR__.'/../'.$blog['image']);
+    if($absolute_path && $image && file_exists($absolute_path)){
+        unlink($absolute_path);
+    }
+    $file_name = $image['name'];
+    $tmp_name = $image["tmp_name"];
+    $absolute_path = realpath (__DIR__ ."/../assets/img") . "/". $file_name;
+    $relative_path = "/assets/img/" . $file_name;
+    
+    if(!move_uploaded_file($tmp_name,$absolute_path)){
+        die("<div class='text-center'><div class='alert alert-danger'> fail to upload image </div></div>");
+    }
+    
+    $sql = "UPDATE posts 
+    SET title = '$title' , content = '$content' , image = '$relative_path' 
+    where id = '$id'";
+
+    $res = mysqli_query($conn,$sql);
+    if($res){
+        return true;
+    }else{
+        return false;
+    }
+}
+/********************** function to    ********************** */
+
+

@@ -28,6 +28,8 @@ else {
 }
 }
 
+
+
 /*************  test how store image in folder********** */
 // // echo  __DIR__ ;
 // // $image = $_FILES['image'];

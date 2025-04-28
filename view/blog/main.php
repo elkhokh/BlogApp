@@ -33,6 +33,7 @@ $image_path = "http://".$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF'])  ;
                     <a href="\." class="btn btn-outline-primary btn-sm">Download image</a>
                     <a href="index.php?page=create" class="btn btn-outline-success btn-sm">Add</a>
                     <a href="index.php?page=update&id=<?=$blog['id'] ?>" class="btn btn-outline-warning btn-sm">Edit</a>
+                    
                     <form action="index.php?page=delete_controller" method="POST"
                         onsubmit="return confirm('Are you sure you want to delete ?');"
                         style="display:inline-block;">
