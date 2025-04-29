@@ -1,6 +1,10 @@
 
-
+<?php $main_content  = get_main_content(); ?>
         <!-- Main Content-->
+        <?php
+                    // if (mysqli_num_rows($main_content) > 0):
+                    //     while ($content = mysqli_fetch_assoc($main_content)): 
+                        ?>
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
@@ -62,7 +66,7 @@
                 </div>
             </div>
         </div>
-      
-        <?php
+    
+          
 require_once('view/layout/footer.php');
 ?>

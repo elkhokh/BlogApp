@@ -41,6 +41,7 @@ $rout = [
 $file = isset($rout[$page]) ? $rout[$page] : './view/error/404.php';
 include $file;
 
+
 /******************** another routing system*************************** */
 // switch($page){
 //     case 'home' :
@@ -89,3 +90,4 @@ include $file;
 
 
 require_once('view/layout/footer.php');
+

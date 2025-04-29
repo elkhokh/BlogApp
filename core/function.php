@@ -99,7 +99,7 @@ function add_blog($title, $content, $image){
 /*********** function to find  blog ********************** */
 
 function find_blog($id){
-    
+
     $conn = $GLOBALS['conn'];  //conn with database
     $sql = "SELECT * FROM posts WHERE id = '$id' ";
     $res =mysqli_query($conn , $sql);
@@ -155,4 +155,16 @@ function update_blog($id, $title, $content, $image ){
 // $_SERVER['REQUEST_SCHEME'] to check if host http or https
 function path_image(){
    return $_SERVER['REQUEST_SCHEME'].":"."//" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']);
+}
+
+/*********************  function to get main content  ***************** */
+function get_main_content(){
+    
+    $conn = $GLOBALS['conn'];
+
+    $sql = " SELECT * FROM `main_texts` ORDER BY id ASC ";
+
+    $res = mysqli_query($conn ,$sql);
+
+    return $res ;
 }
