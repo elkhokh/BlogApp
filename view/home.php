@@ -68,5 +68,3 @@
         </div>
     
           
-require_once('view/layout/footer.php');
-?>
